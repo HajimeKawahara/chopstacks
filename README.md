@@ -1,2 +1,5 @@
-# chopstacks
-Flux-preserved resampling of 1D data
+# ChopStacks
+
+Flux-preserved resampling and stacking of 1D data.
+
+
