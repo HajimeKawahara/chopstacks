@@ -13,3 +13,8 @@ See ipynb for examples and document/manual.pdf for the algorithm.
 * stacking 1D data with preserving flux
 * converting the 1D data into the log 1D data with preserving flux
 
+## install
+
+```
+python setup.py install
+```
