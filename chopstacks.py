@@ -117,3 +117,49 @@ if __name__ == "__main__":
 #            liney=[hf[i],f[ind[i]]]
 #            ax.plot(linex,liney)
     plt.show()
+
+def set_master_analog(xs,xe,R,opt):
+    # it might be useful to set the master analog bin.
+    # xs & xe should be x[0] & x[-1] 
+    if(opt==0):
+        ls=np.log(xs)
+        le=np.log(xe)
+        Nf=R*(le-ls)
+        Ni=int(Nf)
+        logx=np.linspace(ls,le,Ni)
+        hxw=buildwall(logx)
+        hxw=exp(hxw)
+        hx=exp(logx)
+        
+        return hx, hxw
+
+    elif(opt==1):
+        ls=np.log(xs)
+        le=np.log(xe)
+        Nf=R*(le-ls)
+        Ni=int(Nf)
+        lhx=np.linspace(ls,le,Ni)
+        lhxw=buildwall(lhx)
+
+        return lhx, lhxw
+
+    else:
+        print "no opt @ set_master_analog"
+        sys.exit("exit")
+
+def setanalogbin(x,xw,f,R,opt=0):
+    # opt=1 gives log(x) and log*x*f instead of x, f
+
+    if(opt==0):
+        hx,hxw=set_master_analog(x[0],x[-1],R,opt)
+        hf=cutput(xw,f,hxw)
+
+        return hx, hxw, hf
+
+    elif(opt==1):
+        lhx,lhxw=set_master_analog(x[0],x[-1],R,opt)
+        hxf=cutput(np.log(xw),x*f,lhxw)
+        
+        return lhx, lhxw, hxf
+
+
