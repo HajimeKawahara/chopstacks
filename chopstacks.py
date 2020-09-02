@@ -9,7 +9,7 @@ def cutput(xw,f,hxw,hf=None,silent=None):
     #see note 14.8.12 and 14.9.02
     if hf is None:
         if silent is None:
-            print "Reset master data (hf) to zero."
+            print("Reset master data (hf) to zero.")
         hf=np.zeros(len(hxw)-1)
 
     ind=np.digitize(hxw,xw)
@@ -51,7 +51,7 @@ def buildwall(x,edge="half"):
         xw[0]=1.5*x[0]-0.5*x[1]
         xw[nx]=1.5*x[nx-1]-0.5*x[nx-2]
     else:
-        print edge," does not exist in the edge mode"
+        print(edge," does not exist in the edge mode")
         sys.exit("exit")
 
     return xw
@@ -68,7 +68,7 @@ def check_preservation(xw,f,hxw,hf):
         bw=xw[i+1]-xw[i]
         sum=sum+bw*f[i]
 
-    print "(1 - sum input/sum output) =",1 - sum/llsum
+    print("(1 - sum input/sum output) =",1 - sum/llsum)
 
 
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     args = parser.parse_args()    
 
     
-    print "just for test"
+    print("just for test")
     #master hat
     hxw=np.arange(0.0,100.0,1.5)
     hx=np.zeros(len(hxw)-1)
@@ -144,7 +144,7 @@ def set_master_analog(xs,xe,R,opt):
         return lhx, lhxw
 
     else:
-        print "no opt @ set_master_analog"
+        print("no opt @ set_master_analog")
         sys.exit("exit")
 
 def setanalogbin(x,xw,f,R,opt=0):
